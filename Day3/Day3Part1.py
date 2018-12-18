@@ -2,22 +2,24 @@ f = open("/Users/mcneillc/Documents/advent-of-code-2015/Day3/Day3input.txt","r")
 directions = f.readlines()
 f.close()
 
-def houses_visited_at_least_once():
-    x_position = 0
-    y_position = 0
+def houses_visited():
+    journey = directions[0]
     locations = [[0,0]]
 
-    for char in directions[0]:
-        if char == "^":
+    x_position = 0
+    y_position = 0
+
+    for move in journey:
+        if move == "^":
             y_position += 1
             locations.append([x_position, y_position])
-        elif char == ">":
+        elif move == ">":
             x_position += 1
             locations.append([x_position, y_position])                
-        elif char == "v":
+        elif move == "v":
             y_position -= 1
             locations.append([x_position, y_position])                
-        elif char == "<":
+        elif move == "<":
             x_position -= 1
             locations.append([x_position, y_position]) 
 
@@ -28,4 +30,4 @@ def houses_visited_at_least_once():
 
     return len(houses)
 
-print(houses_visited_at_least_once())
+print(houses_visited())
